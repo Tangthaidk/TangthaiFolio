@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Warittha Dumkaew — Graphic & Multimedia Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --base: #F7F5F0;
+    --surface: #EDE9E0;
+    --ink: #1A1612;
+    --accent: #5B4AE8;
+    --punch: #F2C94C;
+    --border: 3px solid #1A1612;
+    --shadow: 6px 6px 0 #1A1612;
+    --clay-shadow:
+      0 2px 4px rgba(26,22,18,0.06),
+      0 8px 24px rgba(26,22,18,0.10),
+      0 20px 48px rgba(26,22,18,0.08);
+    --radius: 24px;
+    --font: 'Space Grotesk', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--base);
+    color: var(--ink);
+    font-family: var(--font);
+    font-size: 17px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── LOAD FADE ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in { animation: fadeUp 0.6s ease both; }
+  .fade-in:nth-child(2) { animation-delay: 0.1s; }
+  .fade-in:nth-child(3) { animation-delay: 0.2s; }
+  .fade-in:nth-child(4) { animation-delay: 0.3s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fade-in { animation: none; }
+  }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ── NAV ── */
+  nav {
+    padding: 24px 0;
+    border-bottom: var(--border);
+    background: var(--base);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  nav .inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-name {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.15s;
+  }
+  .nav-links a:hover { border-color: var(--accent); }
+  .nav-links a:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 80px 0 72px;
+    border-bottom: var(--border);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 64px;
+    align-items: start;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--punch);
+    border: var(--border);
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 28px;
+    box-shadow: var(--shadow);
+  }
+  .hero-eyebrow-dot {
+    width: 8px; height: 8px;
+    background: var(--ink);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  h1 {
+    font-size: clamp(48px, 6vw, 80px);
+    font-weight: 700;
+    line-height: 1.0;
+    letter-spacing: -0.04em;
+    margin-bottom: 24px;
+    max-width: 14ch;
+  }
+  h1 .block-accent {
+    display: block;
+    color: var(--accent);
+  }
+  .hero-bio {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.65;
+    max-width: 54ch;
+    color: #4A453F;
+    margin-bottom: 36px;
+  }
+  .hero-cta-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    border: var(--border);
+    padding: 14px 28px;
+    font-family: var(--font);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: var(--shadow);
+    transition: transform 0.1s, box-shadow 0.1s;
+  }
+  .btn-primary:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0 #1A1612;
+  }
+  .btn-primary:active {
+    transform: translate(2px, 2px);
+    box-shadow: 3px 3px 0 #1A1612;
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    border: var(--border);
+    padding: 14px 28px;
+    font-family: var(--font);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.1s;
+  }
+  .btn-secondary:hover { background: var(--surface); }
+  .btn-primary:focus-visible,
+  .btn-secondary:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  /* ── HERO STAT CARD (clay) ── */
+  .hero-stats {
+    background: var(--surface);
+    border: var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--clay-shadow);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .stat-item {}
+  .stat-number {
+    font-size: 44px;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .stat-number span { color: var(--accent); }
+  .stat-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #7A736A;
+    margin-top: 4px;
+  }
+  .stat-divider {
+    height: 1px;
+    background: rgba(26,22,18,0.15);
+  }
+  .hero-tools-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #7A736A;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+  }
+  .tool-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .tool-tag {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border: 2px solid var(--ink);
+    background: var(--base);
+  }
+
+  /* ── SECTION HEADER ── */
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    margin-bottom: 40px;
+    padding-bottom: 16px;
+    border-bottom: var(--border);
+  }
+  .section-title {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+  .section-count {
+    font-size: 14px;
+    font-weight: 500;
+    color: #7A736A;
+  }
+
+  /* ── PROJECTS ── */
+  .projects-section {
+    padding: 80px 0;
+    border-bottom: var(--border);
+  }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .project-card {
+    background: var(--surface);
+    border: var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--clay-shadow);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .project-card:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: var(--clay-shadow), var(--shadow);
+  }
+  .project-card.featured {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  .project-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .project-tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border: 2px solid var(--ink);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .project-tag.health { background: #C8F7E4; }
+  .project-tag.research { background: #E4D9FF; }
+  .project-tag.social { background: var(--punch); }
+  .project-tag.print { background: #FFD6C8; }
+  .project-org {
+    font-size: 12px;
+    font-weight: 500;
+    color: #7A736A;
+    margin-left: auto;
+  }
+  .project-title {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  .project-desc {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #4A453F;
+  }
+  .project-deliverables {
+    margin-top: auto;
+  }
+  .deliverables-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #7A736A;
+    margin-bottom: 8px;
+  }
+  .deliverables-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .deliverable-chip {
+    font-size: 12px;
+    padding: 3px 10px;
+    background: var(--base);
+    border: 1.5px solid rgba(26,22,18,0.25);
+    border-radius: 100px;
+    color: #4A453F;
+  }
+  .project-visual {
+    background: var(--ink);
+    border: var(--border);
+    border-radius: 16px;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .project-visual svg { opacity: 0.9; }
+
+  /* ── ABOUT ── */
+  .about-section {
+    padding: 80px 0;
+    border-bottom: var(--border);
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .about-text h2 {
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 20px;
+    line-height: 1.1;
+  }
+  .about-text p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #4A453F;
+    margin-bottom: 16px;
+  }
+  .about-text p:last-child { margin-bottom: 0; }
+  .experience-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .exp-item {
+    background: var(--surface);
+    border: var(--border);
+    border-radius: 16px;
+    padding: 20px 24px;
+    box-shadow: var(--clay-shadow);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+    align-items: start;
+  }
+  .exp-item + .exp-item { margin-top: 10px; }
+  .exp-role {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .exp-org {
+    font-size: 13px;
+    color: #7A736A;
+    margin-top: 2px;
+  }
+  .exp-loc {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent);
+    text-align: right;
+  }
+
+  /* ── SKILLS ── */
+  .skills-section {
+    padding: 80px 0;
+    border-bottom: var(--border);
+  }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .skill-card {
+    background: var(--surface);
+    border: var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--clay-shadow);
+    padding: 28px;
+  }
+  .skill-card-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--ink);
+  }
+  .skill-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .skill-list li {
+    font-size: 14px;
+    color: #4A453F;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .skill-dot {
+    width: 5px; height: 5px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    padding: 80px 0 100px;
+  }
+  .contact-box {
+    background: var(--ink);
+    color: var(--base);
+    border: var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--clay-shadow);
+    padding: 56px 64px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 48px;
+    align-items: center;
+  }
+  .contact-box h2 {
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 12px;
+    color: var(--base);
+  }
+  .contact-box p {
+    font-size: 16px;
+    color: rgba(247,245,240,0.65);
+    max-width: 46ch;
+  }
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-end;
+  }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--base);
+    text-decoration: none;
+    padding: 12px 20px;
+    border: 2px solid rgba(247,245,240,0.3);
+    border-radius: 100px;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .contact-link:hover {
+    border-color: var(--punch);
+    background: rgba(242,201,76,0.1);
+  }
+  .contact-link:focus-visible {
+    outline: 3px solid var(--punch);
+    outline-offset: 3px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 24px 0;
+    border-top: var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-name {
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .footer-note {
+    font-size: 13px;
+    color: #7A736A;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card.featured {
+      grid-column: auto;
+      grid-template-columns: 1fr;
+    }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .contact-box {
+      grid-template-columns: 1fr;
+      padding: 40px 32px;
+    }
+    .contact-links { align-items: flex-start; }
+  }
+
+  @media (max-width: 600px) {
+    .container { padding: 0 20px; }
+    h1 { font-size: 42px; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .contact-box h2 { font-size: 30px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container inner">
+    <a class="nav-name" href="#">Warittha Dumkaew</a>
+    <ul class="nav-links">
+      <li><a href="#projects">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow fade-in">
+          <span class="hero-eyebrow-dot"></span>
+          Available for opportunities
+        </div>
+        <h1 class="fade-in">Design that <span class="block-accent">moves people.</span></h1>
+        <p class="hero-bio fade-in">
+          Graphic &amp; multimedia designer with experience in health research, international NGOs, and tele-healthcare. I make complex information feel approachable — across print, digital, and social media, in Thai, French, and English contexts.
+        </p>
+        <div class="hero-cta-row fade-in">
+          <a href="#projects" class="btn-primary">See my work</a>
+          <a href="#contact" class="btn-secondary">Get in touch</a>
+        </div>
+      </div>
+      <div class="hero-stats fade-in">
+        <div class="stat-item">
+          <div class="stat-number">4<span>+</span></div>
+          <div class="stat-label">Countries worked across</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-number">6<span>+</span></div>
+          <div class="stat-label">Organizations, research to startup</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-number">MSc</div>
+          <div class="stat-label">Université Paris Cité, French Embassy scholarship</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div>
+          <div class="hero-tools-label">Core tools</div>
+          <div class="tool-tags">
+            <span class="tool-tag">Illustrator</span>
+            <span class="tool-tag">InDesign</span>
+            <span class="tool-tag">Photoshop</span>
+            <span class="tool-tag">Figma</span>
+            <span class="tool-tag">Premiere Pro</span>
+            <span class="tool-tag">WordPress</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects-section" id="projects">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Selected work</h2>
+      <span class="section-count">4 projects</span>
+    </div>
+    <div class="projects-grid">
+
+      <!-- FEATURED: OdySight -->
+      <div class="project-card featured">
+        <div>
+          <div class="project-meta">
+            <span class="project-tag health">Health tech</span>
+            <span class="project-tag print">Print</span>
+            <span class="project-org">Tilak Healthcare · Paris</span>
+          </div>
+          <h3 class="project-title">OdySight — Patient &amp; Clinician Communication</h3>
+          <p class="project-desc">
+            Designed the full visual communication layer for OdySight, a tele-health vision monitoring game used by ophthalmologists across France. Created print materials, stakeholder communication books, social media content, and website assets — translating medical data into language patients and clinicians could act on together.
+          </p>
+          <div class="project-deliverables">
+            <div class="deliverables-label">Deliverables</div>
+            <div class="deliverables-list">
+              <span class="deliverable-chip">Print materials</span>
+              <span class="deliverable-chip">Communication books</span>
+              <span class="deliverable-chip">Social media</span>
+              <span class="deliverable-chip">Website assets</span>
+              <span class="deliverable-chip">Brand guidelines</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-visual">
+          <!-- Placeholder visual: abstract eye / game grid motif -->
+          <svg width="220" height="180" viewBox="0 0 220 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="110" cy="90" rx="80" ry="48" stroke="#5B4AE8" stroke-width="3"/>
+            <circle cx="110" cy="90" r="22" fill="#5B4AE8" fill-opacity="0.3" stroke="#5B4AE8" stroke-width="2"/>
+            <circle cx="110" cy="90" r="8" fill="#F2C94C"/>
+            <line x1="30" y1="90" x2="60" y2="90" stroke="rgba(247,245,240,0.3)" stroke-width="1.5"/>
+            <line x1="160" y1="90" x2="190" y2="90" stroke="rgba(247,245,240,0.3)" stroke-width="1.5"/>
+            <circle cx="110" cy="90" r="40" stroke="rgba(91,74,232,0.25)" stroke-width="1" stroke-dasharray="4 4"/>
+            <circle cx="110" cy="90" r="60" stroke="rgba(91,74,232,0.15)" stroke-width="1" stroke-dasharray="6 6"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Winrock -->
+      <div class="project-card">
+        <div class="project-meta">
+          <span class="project-tag social">Social</span>
+          <span class="project-tag research">SBCC</span>
+          <span class="project-org">Winrock · USAID</span>
+        </div>
+        <h3 class="project-title">CTIP Campaign — Inside Outsider &amp; MAYDAY</h3>
+        <p class="project-desc">
+          Designed social behavior change communication materials for USAID's Counter-Trafficking in Persons program, reaching migrant communities across Southeast Asia. Visual language had to work across cultural contexts and low-literacy audiences.
+        </p>
+        <div class="project-deliverables">
+          <div class="deliverables-label">Deliverables</div>
+          <div class="deliverables-list">
+            <span class="deliverable-chip">Campaign visuals</span>
+            <span class="deliverable-chip">Social media</span>
+            <span class="deliverable-chip">Audience-adapted design</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- BioThai -->
+      <div class="project-card">
+        <div class="project-meta">
+          <span class="project-tag print">Print</span>
+          <span class="project-org">BioThai Foundation</span>
+        </div>
+        <h3 class="project-title">Visual Strategy — Print, Digital &amp; Exhibition</h3>
+        <p class="project-desc">
+          Led visual communication across print, digital, and exhibition media for BioThai's public awareness work on biodiversity and food sovereignty. Developed a consistent visual identity applied across all channels.
+        </p>
+        <div class="project-deliverables">
+          <div class="deliverables-label">Deliverables</div>
+          <div class="deliverables-list">
+            <span class="deliverable-chip">Publications</span>
+            <span class="deliverable-chip">Exhibition design</span>
+            <span class="deliverable-chip">Digital media</span>
+            <span class="deliverable-chip">Brand standards</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- TDRI -->
+      <div class="project-card" style="grid-column: span 2;">
+        <div class="project-meta">
+          <span class="project-tag research">Research</span>
+          <span class="project-org">TDRI · Bangkok</span>
+        </div>
+        <h3 class="project-title">Knowledge Management — Research Institute Communications</h3>
+        <p class="project-desc">
+          Specialist in knowledge management communications at Thailand Development Research Institute, translating policy research into accessible publications, infographics, and stakeholder materials for government, media, and public audiences.
+        </p>
+        <div class="project-deliverables">
+          <div class="deliverables-label">Deliverables</div>
+          <div class="deliverables-list">
+            <span class="deliverable-chip">Policy publications</span>
+            <span class="deliverable-chip">Infographics</span>
+            <span class="deliverable-chip">Stakeholder reports</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <h2>Bridging research and people</h2>
+        <p>
+          My work sits at the intersection of design and communication — translating complex information into visuals that people can act on. From medical tele-health in Paris to anti-trafficking campaigns in Southeast Asia, I've built materials that meet audiences where they are.
+        </p>
+        <p>
+          I bring experience across the full production spectrum: from developing brand standards and designing publications to editing video and building WordPress sites. I've applied branding frameworks at every organization I've worked with.
+        </p>
+        <p>
+          My background in interdisciplinary research (MSc, Université Paris Cité) shapes how I approach briefs — with curiosity about systems and a commitment to clarity over decoration.
+        </p>
+      </div>
+      <div>
+        <div class="experience-stack">
+          <div class="exp-item">
+            <div>
+              <div class="exp-role">Communication Designer</div>
+              <div class="exp-org">Tilak Healthcare (OdySight)</div>
+            </div>
+            <div class="exp-loc">Paris, FR</div>
+          </div>
+          <div class="exp-item">
+            <div>
+              <div class="exp-role">Design Specialist</div>
+              <div class="exp-org">Winrock International (USAID CTIP)</div>
+            </div>
+            <div class="exp-loc">Thailand</div>
+          </div>
+          <div class="exp-item">
+            <div>
+              <div class="exp-role">Knowledge Management Specialist</div>
+              <div class="exp-org">Thailand Development Research Institute</div>
+            </div>
+            <div class="exp-loc">Bangkok, TH</div>
+          </div>
+          <div class="exp-item">
+            <div>
+              <div class="exp-role">Visual Communication Designer</div>
+              <div class="exp-org">BioThai Foundation</div>
+            </div>
+            <div class="exp-loc">Bangkok, TH</div>
+          </div>
+          <div class="exp-item">
+            <div>
+              <div class="exp-role">Research &amp; Design Intern</div>
+              <div class="exp-org">CRI Paris (Game Lab)</div>
+            </div>
+            <div class="exp-loc">Paris, FR</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills-section" id="skills">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Skills &amp; tools</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-card-title">Design &amp; Production</div>
+        <ul class="skill-list">
+          <li><span class="skill-dot"></span>Adobe Illustrator</li>
+          <li><span class="skill-dot"></span>Adobe InDesign</li>
+          <li><span class="skill-dot"></span>Adobe Photoshop</li>
+          <li><span class="skill-dot"></span>Adobe Premiere Pro</li>
+          <li><span class="skill-dot"></span>Figma</li>
+          <li><span class="skill-dot"></span>Canva</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">Web &amp; Digital</div>
+        <ul class="skill-list">
+          <li><span class="skill-dot"></span>WordPress CMS</li>
+          <li><span class="skill-dot"></span>HTML &amp; CSS</li>
+          <li><span class="skill-dot"></span>JavaScript (basics)</li>
+          <li><span class="skill-dot"></span>Social media content</li>
+          <li><span class="skill-dot"></span>Video editing</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">Communication &amp; Process</div>
+        <ul class="skill-list">
+          <li><span class="skill-dot"></span>Branding standards</li>
+          <li><span class="skill-dot"></span>SBCC design</li>
+          <li><span class="skill-dot"></span>Research communication</li>
+          <li><span class="skill-dot"></span>Multilingual (TH, EN, FR)</li>
+          <li><span class="skill-dot"></span>Cross-cultural teams</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="contact-box">
+      <div>
+        <h2>Let's make something worth showing.</h2>
+        <p>Open to full-time design roles, particularly in health, research, or public interest organizations.</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:[your-email]" class="contact-link">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M1 5l7 5 7-5" stroke="currentColor" stroke-width="1.5"/></svg>
+          Email me
+        </a>
+        <a href="https://linkedin.com/in/[your-handle]" class="contact-link" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M4 6.5V12M4 4.5V4.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M7.5 12V9a1.5 1.5 0 013 0v3M7.5 6.5V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://behance.net/[your-handle]" class="contact-link" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><text x="4.5" y="11" font-size="6" font-family="sans-serif" fill="currentColor" font-weight="700">Be</text></svg>
+          Behance
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container" style="display:flex;justify-content:space-between;align-items:center;width:100%">
+    <span class="footer-name">Warittha Dumkaew</span>
+    <span class="footer-note">Add your GitHub username to publish at yourusername.github.io</span>
+  </div>
+</footer>
+
+</body>
+</html>
