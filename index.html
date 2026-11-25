@@ -205,6 +205,74 @@
     flex-direction: column;
     gap: 20px;
   }
+  .stat-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: var(--border);
+    overflow: hidden;
+    background: var(--base);
+    flex-shrink: 0;
+  }
+  .stat-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .stat-avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #E4D9FF 0%, #C8F7E4 100%);
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+  .stat-avatar-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .stat-avatar-name {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+  .stat-avatar-title {
+    font-size: 12px;
+    color: #7A736A;
+    margin-top: 3px;
+    line-height: 1.4;
+  }
+
+  /* ── FLOATING CHARACTER ── */
+  .hero-stats-wrap {
+    position: relative;
+  }
+  .floating-char {
+    position: absolute;
+    top: -48px;
+    right: -24px;
+    width: 120px;
+    pointer-events: none;
+    animation: floatBob 3.5s ease-in-out infinite;
+    z-index: 2;
+  }
+  @keyframes floatBob {
+    0%, 100% { transform: translateY(0) rotate(-4deg); }
+    50%       { transform: translateY(-10px) rotate(2deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .floating-char { animation: none; }
+  }
+  @media (max-width: 900px) {
+    .floating-char { width: 90px; top: -36px; right: -12px; }
+  }
   .stat-item {}
   .stat-number {
     font-size: 44px;
@@ -214,6 +282,12 @@
     color: var(--ink);
   }
   .stat-number span { color: var(--accent); }
+  .stat-number.stat-degree {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
   .stat-label {
     font-size: 13px;
     font-weight: 500;
@@ -396,7 +470,7 @@
   .experience-stack {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 10px;
   }
   .exp-item {
     background: var(--surface);
@@ -409,11 +483,11 @@
     gap: 8px;
     align-items: start;
   }
-  .exp-item + .exp-item { margin-top: 10px; }
   .exp-role {
     font-size: 15px;
     font-weight: 600;
     letter-spacing: -0.01em;
+    line-height: 1.3;
   }
   .exp-org {
     font-size: 13px;
@@ -425,6 +499,7 @@
     font-weight: 500;
     color: var(--accent);
     text-align: right;
+    white-space: nowrap;
   }
 
   /* ── SKILLS ── */
@@ -532,6 +607,8 @@
   footer {
     padding: 24px 0;
     border-top: var(--border);
+  }
+  footer .inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -604,7 +681,40 @@
           <a href="#contact" class="btn-secondary">Get in touch</a>
         </div>
       </div>
-      <div class="hero-stats fade-in">
+      <div class="hero-stats-wrap fade-in">
+      <!-- FLOATING CHARACTER — swap this whole <img> for your own PNG:
+           <img class="floating-char" src="character.png" alt="">
+           Make sure character.png is in the same folder as index.html -->
+      <svg class="floating-char" viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Body -->
+        <ellipse cx="60" cy="90" rx="34" ry="38" fill="#5B4AE8"/>
+        <!-- Left arm -->
+        <ellipse cx="22" cy="88" rx="10" ry="7" rx="10" ry="7" transform="rotate(-20 22 88)" fill="#5B4AE8"/>
+        <!-- Right arm raised -->
+        <ellipse cx="98" cy="72" rx="10" ry="7" transform="rotate(40 98 72)" fill="#5B4AE8"/>
+        <!-- Head -->
+        <circle cx="60" cy="52" r="28" fill="#F2C94C"/>
+        <!-- Eyes -->
+        <circle cx="50" cy="50" r="5" fill="#1A1612"/>
+        <circle cx="70" cy="50" r="5" fill="#1A1612"/>
+        <!-- Eye shine -->
+        <circle cx="52" cy="48" r="2" fill="#fff"/>
+        <circle cx="72" cy="48" r="2" fill="#fff"/>
+        <!-- Smile -->
+        <path d="M50 60 Q60 68 70 60" stroke="#1A1612" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <!-- Blush left -->
+        <ellipse cx="43" cy="58" rx="6" ry="4" fill="#F97B6B" fill-opacity="0.5"/>
+        <!-- Blush right -->
+        <ellipse cx="77" cy="58" rx="6" ry="4" fill="#F97B6B" fill-opacity="0.5"/>
+        <!-- Feet -->
+        <ellipse cx="47" cy="126" rx="12" ry="7" fill="#1A1612"/>
+        <ellipse cx="73" cy="126" rx="12" ry="7" fill="#1A1612"/>
+        <!-- Star sparkle top-right -->
+        <path d="M108 20 L110 26 L116 28 L110 30 L108 36 L106 30 L100 28 L106 26 Z" fill="#F2C94C"/>
+        <!-- Small dot -->
+        <circle cx="90" cy="14" r="4" fill="#5B4AE8" fill-opacity="0.4"/>
+      </svg>
+      <div class="hero-stats">
         <div class="stat-item">
           <div class="stat-number">4<span>+</span></div>
           <div class="stat-label">Countries worked across</div>
@@ -616,8 +726,13 @@
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
-          <div class="stat-number">MSc</div>
-          <div class="stat-label">Université Paris Cité, French Embassy scholarship</div>
+          <div class="stat-number stat-degree">MSc. Interdisciplinary Approaches to Research and Teaching</div>
+          <div class="stat-label">Université Paris Cité · Franco-Thai Scholarship 2017–2019</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-number stat-degree">B.F.A. Communication Design</div>
+          <div class="stat-label">Srinakharinwirot University, Bangkok</div>
         </div>
         <div class="stat-divider"></div>
         <div>
@@ -631,7 +746,8 @@
             <span class="tool-tag">WordPress</span>
           </div>
         </div>
-      </div>
+      </div><!-- .hero-stats -->
+      </div><!-- .hero-stats-wrap -->
     </div>
   </div>
 </section>
@@ -655,7 +771,7 @@
           </div>
           <h3 class="project-title">OdySight — Patient &amp; Clinician Communication</h3>
           <p class="project-desc">
-            Designed the full visual communication layer for OdySight, a tele-health vision monitoring game used by ophthalmologists across France. Created print materials, stakeholder communication books, social media content, and website assets — translating medical data into language patients and clinicians could act on together.
+            Designed the visual communication layer for OdySight, a tele-health vision monitoring game used by ophthalmologists across France. Created print materials, stakeholder communication books, social media content, and website assets — translating medical data into language patients and clinicians could act on together.
           </p>
           <div class="project-deliverables">
             <div class="deliverables-label">Deliverables</div>
@@ -667,9 +783,9 @@
               <span class="deliverable-chip">Brand guidelines</span>
             </div>
           </div>
+          <a href="tilak.html" class="project-link-btn" style="display:inline-flex;align-items:center;gap:8px;margin-top:20px;font-size:14px;font-weight:600;color:var(--ink);text-decoration:none;padding:10px 20px;border:var(--border);border-radius:100px;background:var(--punch);box-shadow:var(--shadow);transition:transform 0.1s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">View case study <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M3 7h8M7 3l4 4-4 4"/></svg></a>
         </div>
         <div class="project-visual">
-          <!-- Placeholder visual: abstract eye / game grid motif -->
           <svg width="220" height="180" viewBox="0 0 220 180" fill="none" xmlns="http://www.w3.org/2000/svg">
             <ellipse cx="110" cy="90" rx="80" ry="48" stroke="#5B4AE8" stroke-width="3"/>
             <circle cx="110" cy="90" r="22" fill="#5B4AE8" fill-opacity="0.3" stroke="#5B4AE8" stroke-width="2"/>
@@ -728,11 +844,11 @@
       <div class="project-card" style="grid-column: span 2;">
         <div class="project-meta">
           <span class="project-tag research">Research</span>
-          <span class="project-org">TDRI · Bangkok</span>
+          <span class="project-org">Thailand Development Research Institute (TDRI) · Bangkok</span>
         </div>
         <h3 class="project-title">Knowledge Management — Research Institute Communications</h3>
         <p class="project-desc">
-          Specialist in knowledge management communications at Thailand Development Research Institute, translating policy research into accessible publications, infographics, and stakeholder materials for government, media, and public audiences.
+          Translated policy research into accessible publications, infographics, and stakeholder materials for government, media, and public audiences at Thailand's leading independent research institute.
         </p>
         <div class="project-deliverables">
           <div class="deliverables-label">Deliverables</div>
@@ -768,38 +884,38 @@
         <div class="experience-stack">
           <div class="exp-item">
             <div>
-              <div class="exp-role">Communication Designer</div>
+              <div class="exp-role">Intern Communication Designer</div>
               <div class="exp-org">Tilak Healthcare (OdySight)</div>
             </div>
-            <div class="exp-loc">Paris, FR</div>
+            <div class="exp-loc">2018–2019 · Paris, FR</div>
           </div>
           <div class="exp-item">
             <div>
-              <div class="exp-role">Design Specialist</div>
-              <div class="exp-org">Winrock International (USAID CTIP)</div>
+              <div class="exp-role">Digital Content Coordinator</div>
+              <div class="exp-org">Winrock International — USAID CTIP · Focus: Social Behaviour Change Communication</div>
             </div>
-            <div class="exp-loc">Thailand</div>
+            <div class="exp-loc">2020–2021 · Thailand</div>
           </div>
           <div class="exp-item">
             <div>
               <div class="exp-role">Knowledge Management Specialist</div>
-              <div class="exp-org">Thailand Development Research Institute</div>
+              <div class="exp-org">Thailand Development Research Institute (TDRI)</div>
             </div>
-            <div class="exp-loc">Bangkok, TH</div>
+            <div class="exp-loc">2015–2017 · Bangkok, TH</div>
           </div>
           <div class="exp-item">
             <div>
               <div class="exp-role">Visual Communication Designer</div>
               <div class="exp-org">BioThai Foundation</div>
             </div>
-            <div class="exp-loc">Bangkok, TH</div>
+            <div class="exp-loc">2013–2014 · Bangkok, TH</div>
           </div>
           <div class="exp-item">
             <div>
               <div class="exp-role">Research &amp; Design Intern</div>
               <div class="exp-org">CRI Paris (Game Lab)</div>
             </div>
-            <div class="exp-loc">Paris, FR</div>
+            <div class="exp-loc">2017 · Paris, FR</div>
           </div>
         </div>
       </div>
@@ -858,15 +974,15 @@
         <p>Open to full-time design roles, particularly in health, research, or public interest organizations.</p>
       </div>
       <div class="contact-links">
-        <a href="mailto:[your-email]" class="contact-link">
+        <a href="mailto:tangthaidk@gmail.com" class="contact-link">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M1 5l7 5 7-5" stroke="currentColor" stroke-width="1.5"/></svg>
           Email me
         </a>
-        <a href="https://linkedin.com/in/[your-handle]" class="contact-link" target="_blank" rel="noopener">
+        <a href="https://www.linkedin.com/in/warittha-dumkaew/" class="contact-link" target="_blank" rel="noopener">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M4 6.5V12M4 4.5V4.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M7.5 12V9a1.5 1.5 0 013 0v3M7.5 6.5V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           LinkedIn
         </a>
-        <a href="https://behance.net/[your-handle]" class="contact-link" target="_blank" rel="noopener">
+        <a href="https://www.behance.net/maikeedfai_tc27a" class="contact-link" target="_blank" rel="noopener">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><text x="4.5" y="11" font-size="6" font-family="sans-serif" fill="currentColor" font-weight="700">Be</text></svg>
           Behance
         </a>
@@ -877,9 +993,9 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="container" style="display:flex;justify-content:space-between;align-items:center;width:100%">
+  <div class="container inner">
     <span class="footer-name">Warittha Dumkaew</span>
-    <span class="footer-note">Add your GitHub username to publish at yourusername.github.io</span>
+    <span class="footer-note">tangthaidk.github.io</span>
   </div>
 </footer>
 
