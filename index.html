@@ -685,35 +685,132 @@
       <!-- FLOATING CHARACTER — swap this whole <img> for your own PNG:
            <img class="floating-char" src="character.png" alt="">
            Make sure character.png is in the same folder as index.html -->
-      <svg class="floating-char" viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <!-- Body -->
-        <ellipse cx="60" cy="90" rx="34" ry="38" fill="#5B4AE8"/>
-        <!-- Left arm -->
-        <ellipse cx="22" cy="88" rx="10" ry="7" rx="10" ry="7" transform="rotate(-20 22 88)" fill="#5B4AE8"/>
-        <!-- Right arm raised -->
-        <ellipse cx="98" cy="72" rx="10" ry="7" transform="rotate(40 98 72)" fill="#5B4AE8"/>
-        <!-- Head -->
-        <circle cx="60" cy="52" r="28" fill="#F2C94C"/>
-        <!-- Eyes -->
-        <circle cx="50" cy="50" r="5" fill="#1A1612"/>
-        <circle cx="70" cy="50" r="5" fill="#1A1612"/>
-        <!-- Eye shine -->
-        <circle cx="52" cy="48" r="2" fill="#fff"/>
-        <circle cx="72" cy="48" r="2" fill="#fff"/>
-        <!-- Smile -->
-        <path d="M50 60 Q60 68 70 60" stroke="#1A1612" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-        <!-- Blush left -->
-        <ellipse cx="43" cy="58" rx="6" ry="4" fill="#F97B6B" fill-opacity="0.5"/>
-        <!-- Blush right -->
-        <ellipse cx="77" cy="58" rx="6" ry="4" fill="#F97B6B" fill-opacity="0.5"/>
-        <!-- Feet -->
-        <ellipse cx="47" cy="126" rx="12" ry="7" fill="#1A1612"/>
-        <ellipse cx="73" cy="126" rx="12" ry="7" fill="#1A1612"/>
-        <!-- Star sparkle top-right -->
-        <path d="M108 20 L110 26 L116 28 L110 30 L108 36 L106 30 L100 28 L106 26 Z" fill="#F2C94C"/>
-        <!-- Small dot -->
-        <circle cx="90" cy="14" r="4" fill="#5B4AE8" fill-opacity="0.4"/>
-      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <style>
+      .outline {
+        stroke: #1D1E2C;
+        stroke-width: 4.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .thin-outline {
+        stroke: #1D1E2C;
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .hair-strand {
+        stroke: #1D1E2C;
+        stroke-width: 2.8;
+        stroke-linecap: round;
+        fill: none;
+      }
+    </style>
+  </defs>
+
+  
+  <path d="M 118 148 
+           C 90 176, 114 212, 88 246 
+           C 72 268, 94 298, 86 322 
+           C 102 326, 118 318, 128 304 
+           C 122 276, 134 248, 124 220 
+           C 116 196, 128 172, 122 148 Z" fill="#7D5D49" class="outline" />
+  <path d="M 104 184 C 92 208, 114 234, 98 264" class="hair-strand" />
+
+  
+  <path d="M 282 148 
+           C 310 176, 286 212, 312 246 
+           C 328 268, 306 298, 314 322 
+           C 298 326, 282 318, 272 304 
+           C 278 276, 266 248, 276 220 
+           C 284 196, 272 172, 278 148 Z" fill="#7D5D49" class="outline" />
+  <path d="M 296 184 C 308 208, 286 234, 302 264" class="hair-strand" />
+
+  
+  <path d="M 85 395 C 90 325, 130 305, 165 300 L 235 300 C 270 305, 310 325, 315 395 Z" fill="#3B6E6C" class="outline" />
+
+  
+  <path d="M 162 285 L 238 285 L 244 322 C 215 332, 185 332, 156 322 Z" fill="#2E5755" class="outline" />
+  <line x1="185" y1="288" x2="183" y2="326" class="thin-outline" />
+  <line x1="215" y1="288" x2="217" y2="326" class="thin-outline" />
+
+  
+  <path d="M 176 245 L 176 290 C 190 296, 210 296, 224 290 L 224 245 Z" fill="#F2C6A0" class="outline" />
+  
+  <path d="M 178 252 C 192 263, 208 263, 222 252 L 222 265 C 208 273, 192 273, 178 265 Z" fill="#D99B72" />
+
+  
+  <path d="M 122 182 C 108 180, 106 210, 124 214" fill="#F2C6A0" class="outline" />
+  <path d="M 278 182 C 292 180, 294 210, 276 214" fill="#F2C6A0" class="outline" />
+
+  
+  <path d="M 122 145 C 120 205, 145 256, 200 260 C 255 256, 280 205, 278 145 C 276 95, 245 78, 200 78 C 155 78, 124 95, 122 145 Z" fill="#F7D3B2" class="outline" />
+
+  
+  <ellipse cx="152" cy="206" rx="13" ry="7" fill="#E88D72" opacity="0.45" />
+  <ellipse cx="248" cy="206" rx="13" ry="7" fill="#E88D72" opacity="0.45" />
+
+  
+  <path d="M 142 158 Q 162 152 180 158" fill="none" class="outline" />
+  <path d="M 220 156 Q 240 142 260 151" fill="none" class="outline" />
+
+  
+  
+  <path d="M 144 178 Q 162 167 180 178 Q 162 186 144 178 Z" fill="#FFFFFF" class="thin-outline" />
+  <circle cx="166" cy="177" r="6.5" fill="#1D1E2C" />
+  <circle cx="168.5" cy="174.5" r="2" fill="#FFFFFF" />
+  <path d="M 140 176 Q 162 164 182 178" fill="none" class="outline" />
+
+  
+  <path d="M 220 178 Q 238 169 256 178 Q 238 184 220 178 Z" fill="#FFFFFF" class="thin-outline" />
+  <circle cx="242" cy="177" r="6.5" fill="#1D1E2C" />
+  <circle cx="244.5" cy="174.5" r="2" fill="#FFFFFF" />
+  <path d="M 218 178 Q 238 166 260 175" fill="none" class="outline" />
+
+  
+  <path d="M 199 178 L 195 203 Q 200 207 206 204" fill="none" class="thin-outline" />
+
+  
+  <path d="M 183 226 Q 202 232 222 220" fill="none" class="outline" />
+  <path d="M 220 217 Q 225 220 223 224" fill="none" class="thin-outline" />
+
+  
+  <g>
+    <rect x="133" y="160" width="56" height="38" rx="11" fill="#FFFFFF" fill-opacity="0.15" stroke="#8C4A27" stroke-width="4.5" />
+    <rect x="211" y="160" width="56" height="38" rx="11" fill="#FFFFFF" fill-opacity="0.15" stroke="#8C4A27" stroke-width="4.5" />
+    <path d="M 189 173 Q 200 168 211 173" fill="none" stroke="#8C4A27" stroke-width="4.5" stroke-linecap="round" />
+    <line x1="123" y1="172" x2="133" y2="173" stroke="#8C4A27" stroke-width="4.5" stroke-linecap="round" />
+    <line x1="267" y1="173" x2="277" y2="172" stroke="#8C4A27" stroke-width="4.5" stroke-linecap="round" />
+    <line x1="143" y1="167" x2="152" y2="188" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" opacity="0.6" />
+    <line x1="221" y1="167" x2="230" y2="188" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" opacity="0.6" />
+  </g>
+
+  
+  <path d="M 116 142 
+           C 116 92, 152 64, 200 66 
+           C 248 64, 284 92, 284 142 
+           C 296 175, 272 208, 288 242 
+           C 298 265, 276 290, 260 296 
+           C 254 275, 268 250, 260 224 
+           C 252 198, 270 172, 264 146 
+           C 246 138, 224 126, 208 106 
+           C 192 128, 162 142, 136 146 
+           C 130 172, 148 198, 140 224 
+           C 132 250, 146 275, 140 296 
+           C 124 290, 102 265, 112 242 
+           C 128 208, 104 175, 116 142 Z" fill="#9E7B63" class="outline" />
+
+  
+  <path d="M 208 106 Q 218 128 236 138" class="hair-strand" />
+  <path d="M 188 112 Q 174 134 152 144" class="hair-strand" />
+
+  
+  <path d="M 148 92 Q 175 78 198 84" fill="none" stroke="#C5A287" stroke-width="4" stroke-linecap="round" />
+  <path d="M 218 84 Q 245 86 264 108" fill="none" stroke="#C5A287" stroke-width="4" stroke-linecap="round" />
+  <path d="M 122 162 C 114 185, 134 205, 122 232" fill="none" stroke="#C5A287" stroke-width="3.5" stroke-linecap="round" />
+  <path d="M 278 162 C 286 185, 266 205, 278 232" fill="none" stroke="#C5A287" stroke-width="3.5" stroke-linecap="round" />
+</svg>
       <div class="hero-stats">
         <div class="stat-item">
           <div class="stat-number">4<span>+</span></div>
