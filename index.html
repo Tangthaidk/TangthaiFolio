@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Warittha Dumkaew — Graphic & Multimedia Designer</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -74,11 +76,20 @@
     justify-content: space-between;
   }
   .nav-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-size: 18px;
     font-weight: 700;
     letter-spacing: -0.02em;
     color: var(--ink);
     text-decoration: none;
+  }
+  .logo-mark {
+    width: 32px;
+    height: 32px;
+    display: block;
+    flex-shrink: 0;
   }
   .nav-links {
     display: flex;
@@ -378,6 +389,7 @@
     color: var(--text-soft);
   }
   .project-link-btn {
+    align-self: flex-start;
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -621,7 +633,10 @@
 <!-- NAV -->
 <nav>
   <div class="container inner">
-    <a class="nav-name" href="#">Warittha Dumkaew</a>
+    <a class="nav-name" href="#">
+      <img class="logo-mark" src="favicon.svg" alt="" width="32" height="32">
+      Warittha Dumkaew
+    </a>
     <ul class="nav-links">
       <li><a href="#projects">Work</a></li>
       <li><a href="#about">About</a></li>
@@ -642,7 +657,7 @@
         </div>
         <h1 class="fade-in">Design that <span class="block-accent">moves people.</span></h1>
         <p class="hero-bio fade-in">
-          Graphic &amp; multimedia designer with experience in health research, international NGOs, and tele-healthcare. I make complex information feel approachable — across print, digital, and social media, in Thai, French, and English contexts.
+          Graphic and multimedia designer who makes complex information approachable. My experience spans healthcare, policy, legal, business, and economics research, international NGOs, and telehealthcare, with print, digital, and social media work in Thai, French, and English contexts.
         </p>
         <div class="hero-cta-row fade-in">
           <a href="#projects" class="btn-primary">See my work</a>
@@ -867,6 +882,10 @@
             <span class="deliverable-chip">Audience-adapted design</span>
           </div>
         </div>
+        <a href="winrock.html" class="project-link-btn">
+          View case study
+          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M3 7h8M7 3l4 4-4 4"/></svg>
+        </a>
       </div>
 
       <!-- BioThai -->
@@ -888,6 +907,10 @@
             <span class="deliverable-chip">Brand standards</span>
           </div>
         </div>
+        <a href="biothai.html" class="project-link-btn">
+          View case study
+          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M3 7h8M7 3l4 4-4 4"/></svg>
+        </a>
       </div>
 
       <!-- TDRI -->
@@ -908,6 +931,10 @@
             <span class="deliverable-chip">Stakeholder reports</span>
           </div>
         </div>
+        <a href="tdri.html" class="project-link-btn">
+          View case study
+          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M3 7h8M7 3l4 4-4 4"/></svg>
+        </a>
       </div>
 
     </div>

@@ -1,2 +1,0 @@
-# TangthaiFolio
-Warittha Dumkaew

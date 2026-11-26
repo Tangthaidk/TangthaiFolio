@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1600">
+  <!-- "Tt." logo mark — letters drawn from Alfa Slab One (SIL Open Font License) -->
+  <rect width="1600" height="1600" rx="320" fill="#1A1612"/>
+  <path fill="#F2C94C" transform="translate(800 820) scale(1.04) translate(-680.5 382)" d="M766 -536H594V-614H530V-164H600V0H180V-164H250V-614H186V-536H14V-778H766Z M792 -211V-392H748V-556Q786 -556 805.0 -575.5Q824 -595 824 -629V-674H1036V-556H1171V-392H1036V-228Q1036 -195 1050.5 -179.5Q1065 -164 1094 -164Q1132 -164 1177 -173V-16Q1149 -5 1101.5 4.5Q1054 14 1005 14Q899 14 845.5 -37.5Q792 -89 792 -211Z M1191 0V-164H1347V0Z"/>
+</svg>
