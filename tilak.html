@@ -128,61 +128,59 @@
     </p>
 
     <div class="carousel-wrap">
-      <div class="carousel-track-outer" id="carouselOuter">
-        <div class="carousel-track" id="carouselTrack">
+      <div class="carousel-stage" id="carouselStage">
 
-          <div class="iphone-slide">
-            <div class="iphone-frame">
-              <img src="screens/iphone_grit.png" alt="Grille d'Amsler screen — vision grid test module">
-            </div>
-            <div class="iphone-caption">
-              <strong>Amsler Grid — FR</strong>
-              <span>Vision grid test module</span>
-            </div>
+        <div class="iphone-slide">
+          <div class="iphone-frame">
+            <img src="screens/iphone_grit.png" alt="Grille d'Amsler screen — vision grid test module">
           </div>
-
-          <div class="iphone-slide">
-            <div class="iphone-frame">
-              <img src="screens/iphone_highland.png" alt="Highland puzzle gameplay screen">
-            </div>
-            <div class="iphone-caption">
-              <strong>Highland Puzzle</strong>
-              <span>Visual engagement game mode</span>
-            </div>
+          <div class="iphone-caption">
+            <strong>Amsler Grid — FR</strong>
+            <span>Vision grid test module</span>
           </div>
+        </div>
 
-          <div class="iphone-slide">
-            <div class="iphone-frame">
-              <img src="screens/iphone_length_en.png" alt="Distance calibration — English version">
-            </div>
-            <div class="iphone-caption">
-              <strong>Distance Calibration — EN</strong>
-              <span>Face-distance detection before test</span>
-            </div>
+        <div class="iphone-slide">
+          <div class="iphone-frame">
+            <img src="screens/iphone_highland.png" alt="Highland puzzle gameplay screen">
           </div>
-
-          <div class="iphone-slide">
-            <div class="iphone-frame">
-              <img src="screens/iphone_length_fr.png" alt="Distance calibration — French version">
-            </div>
-            <div class="iphone-caption">
-              <strong>Distance Calibration — FR</strong>
-              <span>Version française du calibrage</span>
-            </div>
+          <div class="iphone-caption">
+            <strong>Highland Puzzle</strong>
+            <span>Visual engagement game mode</span>
           </div>
+        </div>
 
-          <div class="iphone-slide">
-            <div class="iphone-frame">
-              <img src="screens/test_screen.png" alt="Test result — Perfect! Good job. screen">
-            </div>
-            <div class="iphone-caption">
-              <strong>Test Result Screen</strong>
-              <span>Positive reinforcement feedback</span>
-            </div>
+        <div class="iphone-slide">
+          <div class="iphone-frame">
+            <img src="screens/iphone_length_en.png" alt="Distance calibration — English version">
           </div>
+          <div class="iphone-caption">
+            <strong>Distance Calibration — EN</strong>
+            <span>Face-distance detection before test</span>
+          </div>
+        </div>
 
-        </div><!-- .carousel-track -->
-      </div><!-- .carousel-track-outer -->
+        <div class="iphone-slide">
+          <div class="iphone-frame">
+            <img src="screens/iphone_length_fr.png" alt="Distance calibration — French version">
+          </div>
+          <div class="iphone-caption">
+            <strong>Distance Calibration — FR</strong>
+            <span>Version française du calibrage</span>
+          </div>
+        </div>
+
+        <div class="iphone-slide">
+          <div class="iphone-frame">
+            <img src="screens/test_screen.png" alt="Test result — Perfect! Good job. screen">
+          </div>
+          <div class="iphone-caption">
+            <strong>Test Result Screen</strong>
+            <span>Positive reinforcement feedback</span>
+          </div>
+        </div>
+
+      </div><!-- .carousel-stage -->
 
       <div class="carousel-controls">
         <button class="carousel-btn" id="prevBtn" aria-label="Previous screen">
@@ -190,7 +188,7 @@
             <path d="M11 14L6 9l5-5"/>
           </svg>
         </button>
-        <div class="carousel-dots" id="carouselDots" role="tablist" aria-label="Screen slides"></div>
+        <div class="carousel-dots" id="carouselDots" aria-label="Choose a screen"></div>
         <span class="carousel-counter" id="carouselCounter">1 / 5</span>
         <button class="carousel-btn" id="nextBtn" aria-label="Next screen">
           <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
@@ -202,7 +200,7 @@
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
           <path d="M2 8h12M9 4l5 4-5 4"/>
         </svg>
-        Swipe or use arrows to browse
+        Swipe, tap a side phone, or use the arrows
       </div>
     </div>
   </div>

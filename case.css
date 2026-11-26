@@ -237,34 +237,49 @@ section.case-section {
 .carousel-section .section-heading { color: var(--base); }
 .carousel-section .body-text { color: rgba(247,245,240,0.7); }
 
+.carousel-section { overflow-x: clip; }
 .carousel-wrap {
   position: relative;
   margin-top: 48px;
+  user-select: none;
 }
-.carousel-track-outer {
-  overflow: hidden;
-  border-radius: 12px;
-}
-.carousel-track {
+
+/* Stacked carousel: the centre phone sits in front,
+   side phones peek out smaller and dimmer. Positions are set by case.js.
+   --peek is how far apart the phones sit. */
+.carousel-stage {
+  --peek: 130px;
+  position: relative;
+  height: 520px;
+  max-width: 640px;
+  margin: 0 auto;
   display: flex;
-  gap: 32px;
-  transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  will-change: transform;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
+  touch-action: pan-y;
+  cursor: grab;
 }
+.carousel-stage:active { cursor: grabbing; }
 
 /* iPhone frame */
 .iphone-slide {
-  flex-shrink: 0;
+  position: absolute;
+  top: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  width: 280px;
+  gap: 18px;
+  width: 240px;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+              opacity 0.4s ease,
+              filter 0.4s ease;
 }
+.iphone-slide.is-active { cursor: inherit; }
+.iphone-slide img { -webkit-user-drag: none; pointer-events: none; }
 .iphone-frame {
   position: relative;
-  width: 220px;
+  width: 200px;
   aspect-ratio: 9/19.5;
   background: #111;
   border-radius: 42px;
@@ -298,7 +313,10 @@ section.case-section {
 }
 .iphone-caption {
   text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
+.iphone-slide.is-active .iphone-caption { opacity: 1; }
 .iphone-caption strong {
   display: block;
   font-size: 14px;
@@ -317,7 +335,7 @@ section.case-section {
   align-items: center;
   justify-content: center;
   gap: 24px;
-  margin-top: 40px;
+  margin-top: 24px;
 }
 .carousel-btn {
   width: 48px;
@@ -336,10 +354,6 @@ section.case-section {
 .carousel-btn:hover {
   background: rgba(247,245,240,0.2);
   border-color: rgba(247,245,240,0.5);
-}
-.carousel-btn:disabled {
-  opacity: 0.3;
-  cursor: default;
 }
 .carousel-dots {
   display: flex;
@@ -524,6 +538,7 @@ section.case-section {
 @media (max-width: 600px) {
   .container { padding: 0 20px; }
   .case-title { font-size: 32px; }
-  .iphone-slide { width: 220px; }
-  .iphone-frame { width: 180px; }
+  .carousel-stage { --peek: 72px; height: 450px; }
+  .iphone-slide { width: 200px; }
+  .iphone-frame { width: 170px; }
 }

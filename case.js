@@ -16,70 +16,81 @@ document
     else img.addEventListener('error', showPlaceholder);
   });
 
-// ── CAROUSEL (only on pages that have one) ───────────────
-if (document.getElementById('carouselTrack')) {
-  // ── CAROUSEL ──────────────────────────────────────────
-  const track    = document.getElementById('carouselTrack');
-  const outer    = document.getElementById('carouselOuter');
+// ── STACKED CAROUSEL (only on pages that have one) ──────
+// The active phone sits in the centre. The others fan out to each side,
+// smaller and dimmer, and the order wraps around endlessly.
+const stage = document.getElementById('carouselStage');
+if (stage) {
+  const slides   = Array.from(stage.querySelectorAll('.iphone-slide'));
   const prevBtn  = document.getElementById('prevBtn');
   const nextBtn  = document.getElementById('nextBtn');
   const dotsWrap = document.getElementById('carouselDots');
   const counter  = document.getElementById('carouselCounter');
-  const slides   = track.querySelectorAll('.iphone-slide');
   const total    = slides.length;
-  let current    = 0;
-  let startX     = 0;
-  let isDragging = false;
+  const half     = Math.floor(total / 2);
+  let active     = 0;
 
   // Build dots
-  slides.forEach((_, i) => {
+  const dots = slides.map((_, i) => {
     const dot = document.createElement('button');
-    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-    dot.setAttribute('role', 'tab');
+    dot.className = 'carousel-dot';
     dot.setAttribute('aria-label', `Screen ${i + 1}`);
     dot.addEventListener('click', () => goTo(i));
     dotsWrap.appendChild(dot);
+    return dot;
   });
 
-  function getSlideWidth() {
-    const slide = slides[0];
-    const style = window.getComputedStyle(slide);
-    return slide.offsetWidth + parseInt(style.marginRight || 0) + 32; // gap = 32px
+  function render() {
+    const peek = parseFloat(getComputedStyle(stage).getPropertyValue('--peek')) || 130;
+    slides.forEach((slide, i) => {
+      // Shortest way round, so the ends wrap seamlessly
+      let offset = i - active;
+      if (offset > half)  offset -= total;
+      if (offset < -half) offset += total;
+      const dist = Math.abs(offset);
+
+      slide.style.transform = `translateX(${offset * peek}px) scale(${1 - dist * 0.12})`;
+      slide.style.zIndex    = total - dist;
+      slide.style.filter    = `brightness(${1 - dist * 0.25})`;
+      slide.style.opacity   = dist > 2 ? '0' : '1';
+      slide.style.pointerEvents = dist > 2 ? 'none' : 'auto';
+      slide.classList.toggle('is-active', offset === 0);
+      slide.setAttribute('aria-hidden', offset === 0 ? 'false' : 'true');
+    });
+    dots.forEach((d, i) => d.classList.toggle('active', i === active));
+    counter.textContent = `${active + 1} / ${total}`;
   }
 
   function goTo(n) {
-    current = Math.max(0, Math.min(n, total - 1));
-    track.style.transform = `translateX(-${current * getSlideWidth()}px)`;
-    dotsWrap.querySelectorAll('.carousel-dot').forEach((d, i) => {
-      d.classList.toggle('active', i === current);
-    });
-    counter.textContent = `${current + 1} / ${total}`;
-    prevBtn.disabled = current === 0;
-    nextBtn.disabled = current === total - 1;
+    active = (n + total) % total;
+    render();
   }
 
-  prevBtn.addEventListener('click', () => goTo(current - 1));
-  nextBtn.addEventListener('click', () => goTo(current + 1));
+  prevBtn.addEventListener('click', () => goTo(active - 1));
+  nextBtn.addEventListener('click', () => goTo(active + 1));
 
-  // Touch/mouse swipe
-  outer.addEventListener('pointerdown', e => { startX = e.clientX; isDragging = true; outer.setPointerCapture(e.pointerId); });
-  outer.addEventListener('pointerup',   e => {
-    if (!isDragging) return;
-    isDragging = false;
-    const diff = startX - e.clientX;
-    if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+  // Tap a side phone to bring it to the centre
+  slides.forEach((slide, i) => {
+    slide.addEventListener('click', () => { if (i !== active) goTo(i); });
   });
-  outer.addEventListener('pointercancel', () => { isDragging = false; });
 
-  // Keyboard
+  // Swipe or drag (mouse and touch)
+  let startX = null;
+  stage.addEventListener('pointerdown', e => { startX = e.clientX; });
+  window.addEventListener('pointerup', e => {
+    if (startX === null) return;
+    const diff = e.clientX - startX;
+    startX = null;
+    if (Math.abs(diff) > 40) goTo(diff < 0 ? active + 1 : active - 1);
+  });
+  window.addEventListener('pointercancel', () => { startX = null; });
+
+  // Keyboard arrows
   document.addEventListener('keydown', e => {
-    if (e.key === 'ArrowRight') goTo(current + 1);
-    if (e.key === 'ArrowLeft')  goTo(current - 1);
+    if (e.key === 'ArrowRight') goTo(active + 1);
+    if (e.key === 'ArrowLeft')  goTo(active - 1);
   });
 
-  // Init
   goTo(0);
-
-  // Recalc on resize
-  window.addEventListener('resize', () => goTo(current));
+  window.addEventListener('resize', render);
 }
