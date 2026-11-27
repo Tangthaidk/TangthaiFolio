@@ -277,39 +277,17 @@ section.case-section {
 }
 .iphone-slide.is-active { cursor: inherit; }
 .iphone-slide img { -webkit-user-drag: none; pointer-events: none; }
+/* No device frame: the screenshots are shown as they are */
 .iphone-frame {
   position: relative;
   width: 200px;
-  aspect-ratio: 9/19.5;
-  background: #111;
-  border-radius: 42px;
-  border: 4px solid #2A2A2A;
-  box-shadow:
-    0 0 0 1px #000,
-    0 24px 64px rgba(0,0,0,0.6),
-    inset 0 0 0 2px #333;
-  overflow: hidden;
   flex-shrink: 0;
-}
-.iphone-frame::before {
-  /* notch */
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 110px;
-  height: 28px;
-  background: #111;
-  border-radius: 0 0 20px 20px;
-  z-index: 10;
 }
 .iphone-frame img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
-  border-radius: 38px;
+  filter: drop-shadow(0 24px 40px rgba(0,0,0,0.5));
 }
 .iphone-caption {
   text-align: center;
@@ -524,7 +502,7 @@ section.case-section {
   word-break: break-all;
 }
 .gallery-item.wide .img-placeholder { aspect-ratio: 16 / 9; }
-.iphone-frame .img-placeholder { height: 100%; aspect-ratio: auto; border-radius: 38px; color: #999; background: #1d1d1d; }
+.iphone-frame .img-placeholder { aspect-ratio: 9 / 17; border-radius: 24px; color: #999; background: #1d1d1d; }
 .instruction-step .img-placeholder { width: 160px; aspect-ratio: 1; border: 2px dashed rgba(26,22,18,0.3); border-radius: 12px; }
 
 /* ── RESPONSIVE ── */
