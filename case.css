@@ -373,7 +373,7 @@ section.case-section {
 /* ── GALLERY GRID (non-phone images) ── */
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   margin-top: 40px;
 }
